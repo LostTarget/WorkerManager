@@ -94,7 +94,7 @@ void CAdmin::Delete()
 		system("pause"); 
 		return; 
 	}
-
+	
 }
 
 void CAdmin::ChPass()
