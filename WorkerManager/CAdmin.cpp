@@ -81,7 +81,20 @@ void CAdmin::Print()
 
 void CAdmin::Delete()
 {
-	 
+	MYSQL_ROW row;
+	string sName; 
+	cout << "请输入要添加的账户名：" << endl;
+	cin >> sName; 
+	
+	// 查询是否存在
+	row = CheckName(sName.c_str()); 
+	if (!row)
+	{
+		cout << "要删除的用户名不存在！" << endl;
+		system("pause"); 
+		return; 
+	}
+
 }
 
 void CAdmin::ChPass()
@@ -131,7 +144,7 @@ MYSQL_ROW CAdmin::CheckName(const char* name)
 
 	if (!res->row_count)
 	{
-		return nullptr;
+		return nullptr; 
 	}
 
 	row = mysql_fetch_row(res); 
