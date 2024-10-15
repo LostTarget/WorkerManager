@@ -82,7 +82,7 @@ void CAdmin::Print()
 void CAdmin::Delete()
 {
 	MYSQL_ROW row;
-	string sName; 
+	string sName,sSQL; 
 	cout << "请输入要添加的账户名：" << endl;
 	cin >> sName; 
 	
@@ -94,7 +94,17 @@ void CAdmin::Delete()
 		system("pause"); 
 		return; 
 	}
-	
+
+	sSQL = "DELETE FROM `admin` WHERE `name` = `" + sName + '\''; 
+
+	int n = mysql_query(m_conn, sSQL.c_str()); 
+
+	if (n)
+		CManager::PrintError(sSQL.c_str()); 
+
+	cout << "删除成功！" << endl; 
+
+	system("pause"); 
 }
 
 void CAdmin::ChPass()
