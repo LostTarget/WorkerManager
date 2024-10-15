@@ -95,7 +95,7 @@ void CAdmin::Delete()
 		return; 
 	}
 
-	sSQL = "DELETE FROM `admin` WHERE `name` = `" + sName + '\''; 
+	sSQL = "DELETE FROM `admin` WHERE `name` = '" + sName + '\''; 
 
 	int n = mysql_query(m_conn, sSQL.c_str()); 
 
@@ -158,8 +158,6 @@ MYSQL_ROW CAdmin::CheckName(const char* name)
 	}
 
 	row = mysql_fetch_row(res); 
-
-	CManager::PrintError("has Founded");
 
 	mysql_free_result(res); 
 
